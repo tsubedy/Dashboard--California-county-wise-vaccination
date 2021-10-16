@@ -23,7 +23,6 @@ function init() {
 	
 
 	// County Data Display
-
 	Object.entries(data[0]).forEach(
 		([key, value]) => d3.select("#county-data")
 			.append("p").text(`${key}:  ${value}`));
@@ -35,7 +34,7 @@ function init() {
 	var saferCounty = data.filter(highCounty);
 	var trace1 = {
 	y: saferCounty.map(row=>row.county),
-	x: saferCounty.map(row=>row.total_full/row.population*100),
+	x: saferCounty.map(row=>(row.total_full/row.population*100),
 	type: "bar",
 	orientation: "h"
 	};
