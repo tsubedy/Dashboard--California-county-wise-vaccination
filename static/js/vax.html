@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>COVID 19 Vaccination Status california counties</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+	</style>
+
+	<style>#map { width: 1500px; height: 800px; }
+.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+</head>
+<body>
+
+<div id='map'></div>
+<script type="text/javascript" src="countyGeoData.js"></script>
+<script type="text/javascript">
+
+	// Map object
+	var map = L.map('map').setView([38.58, -121.5], 6);
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+	// control that shows county info on hover
+	var info = L.control();
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info');
+		this.update();
+		return this._div;
+	};
+
+	info.update = function (props) {
+		this._div.innerHTML = '<h4> Vaccination Status</h4>' +  (props ?
+			'<b>' + props.data.county +" " + 'County' + '</b> <br />' + 'Total Population :' + ' '+ props.data.population  + '<br/>' + 'Fully vaccinated : ' +' ' + props.data.percentFullVax.toFixed(2) + '%  <br />' + 'Cases reported :' + ' ' + props.data.percentCases.toFixed(2) + '%  <br />' +  'Deaths Reported : ' + ' ' + props.data.percentDeaths.toFixed(2) + '%  <br />'
+			: 'Hover over a county');
+	};
+	info.addTo(map);
+
+	// get color depending on vaccination percentages value
+	function getColor(d) {
+		return d > 70 ? '#005824' :
+				d > 60  ? '#238b45' :
+				d > 50  ? '#41ae76' :
+				d > 40  ? '#66c2a4' :
+				d > 30   ? '#99d8c9' :
+				d > 20   ? '#ccece6' :
+				d > 10   ? '#e5f5f9' :
+							'#f7fcfd';
+	}
+
+	function style(feature) {
+		return {
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.8,
+			fillColor: getColor(Math.round(feature.properties.data.percentFullVax, 2))
+		};
+	}
+
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.8
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+
+		info.update(layer.feature.properties);
+	}
+
+	var geojson;
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	geojson = L.geoJson(geoData, {
+		style: style,
+		onEachFeature: onEachFeature
+	}).addTo(map);
+
+	// legend control
+	var legend = L.control({position: 'bottomright'});
+	legend.onAdd = function (map) {
+
+		var div = L.DomUtil.create('div', 'info legend'),
+			grades = [0, 10, 20, 30, 40, 50, 60, 70],
+			labels = [],
+			from, to;
+
+		for (var i = 0; i < grades.length; i++) {
+			from = grades[i];
+			to = grades[i + 1];
+
+			labels.push(
+				'<i style="background:' + getColor(from + 1) + '"></i> ' +
+				from + (to ? '&ndash;' + to : '+'));
+		}
+
+		div.innerHTML = labels.join('<br>');
+		return div;
+	};
+
+	legend.addTo(map);
+
+</script>
+
+</body>
+</html>

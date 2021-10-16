@@ -1,0 +1,152 @@
+[
+    {
+        "county": "Alameda",
+        "population": "1680480.0",
+        "tests": "3590879.0",
+        "positive": "130133.0",
+        "cases": "107950.0",
+        "deaths": "1230.0",
+        "total_full": "1151524",
+        "total_partial": "1128245"
+    },
+    {
+        "county": "Contra Costa",
+        "population": "1159540.0",
+        "tests": "2141866.0",
+        "positive": "102018.0",
+        "cases": "89960.0",
+        "deaths": "882.0",
+        "total_full": "804166",
+        "total_partial": "805267"
+    },
+    {
+        "county": "Fresno",
+        "population": "1013400.0",
+        "tests": "1605085.0",
+        "positive": "144932.0",
+        "cases": "121531.0",
+        "deaths": "1857.0",
+        "total_full": "477528",
+        "total_partial": "517126"
+    },
+    {
+        "county": "Kern",
+        "population": "913090.0",
+        "tests": "1396151.0",
+        "positive": "128279.0",
+        "cases": "111923.0",
+        "deaths": "1421.0",
+        "total_full": "366141",
+        "total_partial": "395875"
+    },
+    {
+        "county": "Los Angeles",
+        "population": "9969510.0",
+        "tests": "29303282.0",
+        "positive": "1702841.0",
+        "cases": "1324628.0",
+        "deaths": "24128.0",
+        "total_full": "6010757",
+        "total_partial": "6285936"
+    },
+    {
+        "county": "Orange",
+        "population": "3175130.0",
+        "tests": "4728003.0",
+        "positive": "346437.0",
+        "cases": "284020.0",
+        "deaths": "5235.0",
+        "total_full": "1947863",
+        "total_partial": "2015165"
+    },
+    {
+        "county": "Riverside",
+        "population": "2520060.0",
+        "tests": "3680001.0",
+        "positive": "394759.0",
+        "cases": "331043.0",
+        "deaths": "4531.0",
+        "total_full": "1189318",
+        "total_partial": "1282784"
+    },
+    {
+        "county": "Sacramento",
+        "population": "1578680.0",
+        "tests": "2585300.0",
+        "positive": "162204.0",
+        "cases": "141319.0",
+        "deaths": "1910.0",
+        "total_full": "850700",
+        "total_partial": "895469"
+    },
+    {
+        "county": "San Bernardino",
+        "population": "2206750.0",
+        "tests": "3803020.0",
+        "positive": "389404.0",
+        "cases": "329165.0",
+        "deaths": "5265.0",
+        "total_full": "997026",
+        "total_partial": "1067484"
+    },
+    {
+        "county": "San Diego",
+        "population": "3347270.0",
+        "tests": "6427084.0",
+        "positive": "403751.0",
+        "cases": "336712.0",
+        "deaths": "3798.0",
+        "total_full": "2117134",
+        "total_partial": "2175592"
+    },
+    {
+        "county": "San Francisco",
+        "population": "883255.0",
+        "tests": "2580665.0",
+        "positive": "59299.0",
+        "cases": "45668.0",
+        "deaths": "562.0",
+        "total_full": "646138",
+        "total_partial": "644212"
+    },
+    {
+        "county": "San Joaquin",
+        "population": "781462.0",
+        "tests": "1335718.0",
+        "positive": "103721.0",
+        "cases": "89882.0",
+        "deaths": "1574.0",
+        "total_full": "365491",
+        "total_partial": "402790"
+    },
+    {
+        "county": "San Mateo",
+        "population": "762357.0",
+        "tests": "2150850.0",
+        "positive": "61476.0",
+        "cases": "48308.0",
+        "deaths": "487.0",
+        "total_full": "550648",
+        "total_partial": "556058"
+    },
+    {
+        "county": "Santa Clara",
+        "population": "1918880.0",
+        "tests": "5255178.0",
+        "positive": "156091.0",
+        "cases": "134261.0",
+        "deaths": "1689.0",
+        "total_full": "1421838",
+        "total_partial": "1408450"
+    },
+    {
+        "county": "Ventura",
+        "population": "841734.0",
+        "tests": "1776747.0",
+        "positive": "111007.0",
+        "cases": "91265.0",
+        "deaths": "1068.0",
+        "total_full": "515663",
+        "total_partial": "531813"
+    }
+]
