@@ -34,7 +34,7 @@ function init() {
 	var saferCounty = data.filter(highCounty);
 	var trace1 = {
 	y: saferCounty.map(row=>row.county),
-	x: saferCounty.map(row=>(row.total_full/row.population*100),
+	x: saferCounty.map(row=>(row.total_full/row.population*100)),
 	type: "bar",
 	orientation: "h"
 	};
