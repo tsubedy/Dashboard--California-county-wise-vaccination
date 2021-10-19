@@ -1,12 +1,102 @@
-body {
-  padding: 0;
-  margin: 0;
-}
 
-#map,
-body,
 html {
   height: 100%;
+}
+
+/* Body */
+body{
+  background-color: #a4b6b3;
+  color: rgb(38, 47, 100);
+}
+
+h1 {
+  padding-top: 0px;
+  padding-left: 0px;
+  font-weight: bold;
+  font-family: Georgia, 'Tahoma', Times, serif;
+  font-size: 16;
+  text-align: center;
+  color: rgb(9, 153, 219);
+  
+}   
+
+h2 {
+  padding-left: 15px;
+  font-weight: bold;
+  font-family: Georgia, 'Tahoma', Times, serif;
+  font-size: 12;
+  text-align: center;
+  color: rgb(74, 10, 148);
+
+}   
+
+h4{
+  padding-top: 0;
+  color: #0d0444;
+  font-weight: bold;
+  font-family: Georgia, 'Tahoma', Times, serif;
+  font-size: 13;
+}
+h3 {
+  padding-top: 0;
+  color: #c51f8e;
+  font-weight: bold;
+  font-family: Georgia, 'Tahoma', Times, serif;
+  padding-bottom: 10px;
+  font-size: 16;
+}
+
+h5 {
+  color: #021b05;
+  font-weight: bold;
+  font-family: Georgia, 'Tahoma', Times, serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14;
+}
+
+a{
+  background-color: rgb(168, 197, 187);
+  color: #0d0d8d;
+  font-size: 16px;
+}
+
+.panel-body {
+background-color: rgb(153, 230, 233);
+border-top-style: inherit;
+border-top-width: 10px;
+border-top-color: rgb(80, 156, 146);
+}
+
+.well {
+  background-color: rgb(123, 198, 201);
+  border-top-style: solid;
+  border-top-width: 15px;
+  border-top-color: rgb(80, 156, 146);
+}
+
+#img{
+  width: 100%;
+}
+
+#gauge {
+  background-color: lightblue;
+  border-top-style: solid;
+  border-top-width: 15px;
+  border-top-color: rgb(80, 156, 146);
+
+}
+
+
+/* Paragraph*/
+p{
+color: rgb(9, 3, 37);
+font-family: calibri, Helvetica, sans-serif;
+font-size: 16px;
+padding-left: 10px;
+padding-right: 30px;
+text-align: left;
+
 }
 
 .legend {
@@ -24,3 +114,36 @@ html {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+.text-center {
+  height: 250px;  
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: rgb(180, 210, 219);
+  border-top-style: solid;
+  border-top-width: 10px;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-top-color: rgb(6, 73, 65);
+  border-bottom-color: rgb(80, 156, 146);
+}
+
+
+/* Footer */
+footer{
+background-color: #a58a8a;
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: rgb(80, 156, 146);
+color: rgb(246, 248, 247);
+min-height: 20px;
+font-family: Arial, Tahoma, sans-serif;
+font-size: 12px;
+text-align: center;
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+padding-top: 10px;
+}
+

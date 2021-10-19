@@ -2,14 +2,15 @@
 console.log(data);
 
 
-// gauge chart
-function vacCounty(fullVaccination){
-	return fullVaccination.total_full/fullVaccination.population * 100;
-}
 	// Bar graph
 function highCounty(vaccination){
 	percent = vaccination.total_full/vaccination.population * 100 > 65;	
 	return (percent)
+}
+
+// gauge chart
+function vacCounty(fullVaccination){
+	return fullVaccination.total_full/fullVaccination.population * 100;
 }
 
 // County name drop down menu
@@ -32,31 +33,67 @@ function init() {
 
 	// bar Chart
 	var saferCounty = data.filter(highCounty);
-	var trace1 = {
+	var fully_vaccinated = {
 	y: saferCounty.map(row=>row.county),
-	x: saferCounty.map(row=>(row.total_full/row.population*100)),
+	x: saferCounty.map(row=>(row.total_full/row.population*100).toFixed(2)),
+	mode: "markers+lines",
 	type: "bar",
+	name: "% Fully Vaccinated",
 	orientation: "h"
 	};
 
-	var traceData = [trace1];
+	var cases = {
+		y: saferCounty.map(row=>row.county),
+		x: saferCounty.map(row=>(row.cases/row.population*100).toFixed(2)),
+		mode: "markers+lines",
+		type: "line",
+		name: "% Cases",
+		orientation: "h"
+		};
+
+	var deaths = {
+		y: saferCounty.map(row=>row.county),
+		x: saferCounty.map(row=>(row.deaths/row.population*100).toFixed(2)),
+		mode: "markers+lines",
+		type: "line",
+		name: "% Deaths",
+		orientation: "h"
+		};
+
+		var traceData = [fully_vaccinated, cases, deaths];
+
 
 	var layout ={
-	title: "Counties with more than 65% complete vaccination", 
-	width: 650, 
-	height: 350, 
-	margin: { t: 50, b: 20}
+		title: "Counties with >= 65% complete vaccination",
+		xlabel: "Percentage",
+		paper_bgcolor: "lightblue",
+		width: 1150, 
+		height: 550, 
+		margin: { t: 50, b: 125},
+		xaxis: {
+			title: {
+			text: "Percentages",
+			font: {
+				family: "Courier New",
+				size: 18,
+				color: "#e6550d"
+				}
+			}
+			},
+	
 };
 	Plotly.newPlot("plot", traceData, layout);
 
 	// Gauge Chart
 	var gaugePoint = vacCounty(data[0])
+
 	var gaugeData = [{
 		domain: { x: [0, 1], y: [0, 1] },
 		value: gaugePoint,
 		title: {text: "<br>Fully Vaccinated Percentage </br> <br> of county Population"},
 		type: "indicator",
 		mode: "gauge+number",
+		bgAlpha: "0.5",
 		gauge: {
 			axis: { range: [0, 100] },
 			steps: [
@@ -71,12 +108,13 @@ function init() {
 				{ range: [10, 20], color: 'rgb(161, 101, 156))' },
 				{ range: [0, 10], color: 'rgb(161, 81, 156)' }],
 			threshold: {
-				line: { color: "green", width: 8 },
+				line: { color: "darkgreen", width: 8 },
 				thickness: 0.5,
 				value: 99.99}
 		}
 		}];
-	var gaugeLayout = { width: 500, height: 450, margin: { t: 0, b: 0 } };
+
+	var gaugeLayout = {paper_bgcolor: "lightblue", width: 450, height: 585, margin: { t: 0, b: 0 }};
 	Plotly.newPlot('gauge', gaugeData, gaugeLayout);
 	} 
 
