@@ -1,6 +1,5 @@
 // Reading json data file using 
-console.log(data);
-
+// console.log(data);
 
 	// Bar graph
 function highCounty(vaccination){
@@ -14,6 +13,7 @@ function vacCounty(fullVaccination){
 }
 
 // County name drop down menu
+
 function init() {
 	// list of counties
 	d3.select("#selDataset").selectAll('county')
@@ -21,7 +21,6 @@ function init() {
 		.enter().append('option')
 		.text(function (d) { return d; }).attr("value", function (d) 
 		{return d; })
-	
 
 	// County Data Display
 	Object.entries(data[0]).forEach(
@@ -62,7 +61,6 @@ function init() {
 
 		var traceData = [fully_vaccinated, cases, deaths];
 
-
 	var layout ={
 		title: "Counties with >= 65% complete vaccination",
 		xlabel: "Percentage",
@@ -80,7 +78,6 @@ function init() {
 				}
 			}
 			},
-	
 };
 	Plotly.newPlot("plot", traceData, layout);
 
@@ -132,6 +129,4 @@ function updatePlotly() {
 	var gaugePoint =vacCounty(dataset[0]);
 	Plotly.restyle('gauge', "value", gaugePoint);
 }
-
 init();
-
