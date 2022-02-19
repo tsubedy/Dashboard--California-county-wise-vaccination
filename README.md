@@ -1,5 +1,5 @@
 # Project_3:  Data Visualization and Dashboard
-https://tsubedy.github.io/Project_3/
+https://tsubedy.github.io/Dashboard--California-county-wise-vaccination/
 
 
 ## Data Extraction:
